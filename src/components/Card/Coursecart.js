@@ -3,21 +3,67 @@ import React, { Component } from 'react'
 import Heading from '../Reusable/Heading'
 import Img from 'gatsby-image'
 
+const getCaty = items => {
+    let holdItems = items.map( item => {
+        return item.node.category
+    });
+    let holdCategories = new Set(holdItems);
+    let categories = Array.from(holdCategories);
+    categories = ["all", ...categories];
+    return categories;
+}
+
 export default class Coursecart extends Component {
     constructor(props){
         super(props)
         this.state={
-            courses: props.courses,
-            mycourses: props.courses
+            courses: props.courses.edges,
+            mycourses: props.courses.edges,
+            mycategories: getCaty(props.courses.edges)
         }
     }
+
+    catyClicked = (category) => {
+        let keepItSafe = [...this.state.courses];
+        if(category === "all"){
+            this.setState( () => {
+                return {mycourses: keepItSafe};
+            })
+        }else{
+            let holdme = keepItSafe.filter( (edges) => edges.node.category === category)
+            this.setState( () => {
+                return { mycourses: holdme };
+            })
+        }
+    }
+
     render() {
         return (
-            <section className="py-5">
+            <section className="py-5"> 
                 <div className="container">
                     <Heading title="Courses"/>
+                    <div className="row my-3">
+                        <div className="col-10 mx-auto text-center">
+                            {
+                                this.state.mycategories.map( (category, index) => {
+                                    return (
+                                        <button 
+                                            key={index} 
+                                            type="button" 
+                                            className="btn btn-info m-3 px-3"
+                                            onClick={ () => {
+                                                this.catyClicked(category)
+                                            }}
+                                        >
+                                            {category}
+                                        </button>
+                                    )
+                                })
+                            }
+                        </div>
+                    </div>
                     <div className="row">
-                        {this.state.mycourses.edges.map( (edges) => {
+                        {this.state.mycourses.map( (edges) => {
                             return (
                                 <div
                                 Key={edges.node.id}
