@@ -81,7 +81,7 @@ export default class Coursecart extends Component {
                                         data-item-id={edges.node.id}
                                         data-item-name={edges.node.title}
                                         data-item-price={edges.node.price}
-                                        data-item-url="https://learncodeonline.in"
+                                        data-item-url="https://myfirstecommercewebsite.netlify.app/"
                                         data-item-image={edges.node.image.fixed.src}
                                         className="btn btn-warning snipcart-add-item">
                                             Join Now
