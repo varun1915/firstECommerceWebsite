@@ -33,7 +33,7 @@ export default function DualInfoblock({heading}) {
                     </div>
                     <div className="col-4">
                         <div className="card bg-dark" style={{width: "85%"}}>
-                            <img src="https://images.pexels.com/photos/1261427/pexels-photo-1261427.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" 
+                            <img src="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" 
                             className="card-img-top" alt="Image goes here"/>
                             <div className="card-body text-white">
                                 <h5 className="card-title text-success">Just click Photos</h5>
